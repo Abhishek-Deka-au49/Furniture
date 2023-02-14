@@ -3,8 +3,8 @@ dotenv.config()
 const express = require("express");
 const hbs = require("hbs");
 const bodyParser = require("body-parser");
-const routes = require("./src/routes/dynamicHome");
-const router = require("./src/routes/authentication")
+const routes = require("./src/routes/mainRouter");
+const router = require("./src/routes/authRouter")
 const app = express();
 const cookieParser = require("cookie-parser");
 
@@ -22,7 +22,7 @@ connectDB()
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }))
-
+app.use(cookieParser())
 // parse application/json
 app.use(bodyParser.json())
 
